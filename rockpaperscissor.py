@@ -1,19 +1,33 @@
 import random
-def play():
 
-    user = input("'r' for rock, 'p' for paper and 's' for scissors")
-    computer = random.choice(['r','p','s'])
-    if user == computer:
-        return "It is a tie"
+user_wins = 0
+computer_wins = 0
+options = ["rock","paper","scissors"]
+while True:
+    user_input = input("Type rock\paper\scissors or Q to quit").lower()
+    if user_input == 'q':
+        break
+        #if user_input is in the list , this is a way to check multiple things
+    if user_input not in options:
+        continue
     
-    if is_win(user, computer):
-        return "you won"
-    
-    return "You lost"
-    
+    random_number =  random.randint(0,2)
+    computer_pick = options[random_number]
+    print('Computer picked ', computer_pick)
 
-def is_win(player, opponent):
-    if(player == 'r' and opponent == 's') or (player == 's' and opponent == 'p') or (player == 'p' and opponent == 'r'):
-        return True
+    if user_input == 'rock' and computer_pick == 'scissors':
+        print('you won')
+        user_wins+=1
+    elif user_input == 'paper' and computer_pick == 'rock':
+        print('you won')
+        user_wins+=1
+    elif user_input == 'scissors' and computer_pick == 'paper':
+        print('you won')
+        user_wins+=1
+    else:
+        print('you lost')
+        computer_wins+=1
 
-play()
+print("goodbye!")
+
+    
